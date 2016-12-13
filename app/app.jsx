@@ -5,6 +5,10 @@ var About = require('About');
 var Examples= require('Examples');
 var Weather = require('Weather');
 
+//Load foundations
+require('style!css!foundation-sites/dist/foundation.min.css');
+$(document).foundation();
+
 //Object Destructuring. Everything gets assigned react-router.<>
 var {Route, Router, IndexRoute, hashHistory} = require('react-router');
 
