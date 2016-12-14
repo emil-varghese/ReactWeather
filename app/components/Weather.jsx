@@ -15,7 +15,9 @@ var Weather = React.createClass({
 
     this.setState({
       isLoading: true,
-      errorMessage: undefined
+      errorMessage: undefined,
+      location: undefined,
+      temp: undefined
     })
 
     openWeatherMap.getTemp(location).then (function (temp) {
@@ -31,6 +33,28 @@ var Weather = React.createClass({
         });
 
     });
+  },
+  componentDidMount: function() {
+    var location = this.props.location.query.location; //The location parameter gets the param from
+                                                       // search string. Only last part changes for
+                                                       // different params
+    if (typeof location ==='string' && location.length> 0) {
+      this.handleSearch(location);
+      window.location.hash = '#/'; //reset the query string after successful search
+    }
+
+  }, //Search on home page does not work
+     //The component does not know how to update itself in the same page. So the following function
+     //updates the props. State and props
+     //a component can change state, but not the props
+     //but a parent can update the childs props
+  componentWillReceiveProps: function(newProps) {
+    var location = newProps.location.query.location;
+
+    if (location && location.length> 0) {
+      this.handleSearch(location);
+      window.location.hash = '#/'; //reset the query string after successful search
+    }
   },
   render: function() {
     var {isLoading,temp,location,errorMessage} = this.state; //Destructuring this means
@@ -59,7 +83,6 @@ var Weather = React.createClass({
         {renderMessage()}
         {rendorError()}
       </div>
-
     );
   }
 });
