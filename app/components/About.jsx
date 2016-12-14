@@ -13,7 +13,11 @@ var About = React.createClass({
 //Refactored to Arrow function
 var About = (props) => {
   return(
-    <h3>About Component</h3>
+    <div>
+        <h1 className="text-center">About</h1>
+        <p>About this app</p>
+    </div>
+
   );
 }
 module.exports = About;
