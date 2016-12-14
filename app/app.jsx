@@ -9,6 +9,9 @@ var Weather = require('Weather');
 require('style!css!foundation-sites/dist/foundation.min.css');
 $(document).foundation();
 
+//App css
+require('style!css!applicationStyles');
+
 //Object Destructuring. Everything gets assigned react-router.<>
 var {Route, Router, IndexRoute, hashHistory} = require('react-router');
 
