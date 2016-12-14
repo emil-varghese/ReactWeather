@@ -10,7 +10,7 @@ require('style!css!foundation-sites/dist/foundation.min.css');
 $(document).foundation();
 
 //App css
-require('style!css!applicationStyles');
+require('style!css!sass!applicationStyles');
 
 //Object Destructuring. Everything gets assigned react-router.<>
 var {Route, Router, IndexRoute, hashHistory} = require('react-router');
